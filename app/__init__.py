@@ -27,7 +27,7 @@ def create_app():
     # --- Login Manager Config ---
     login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'info'
-    login_manager.login_message = 'Ushbu sahifani ko\'rish uchun tizimga kiring!'
+    login_manager.login_message = 'Ushbu sahifani ko‘rish uchun tizimga kiring!'
 
     # --- User Loader ---
     from .models import User
