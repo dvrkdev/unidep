@@ -65,10 +65,10 @@ class LoginForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField(
         'Sarlavha',
-            validators=[
-                DataRequired(message='Sarlavha kiritish majburiy.'),
-                Length(max=100, message='Sarlavha 100 ta belgidan oshmasligi kerak.')
-            ],
+        validators=[
+            DataRequired(message='Sarlavha kiritish majburiy.'),
+            Length(max=100, message='Sarlavha 100 ta belgidan oshmasligi kerak.')
+        ],
         render_kw={"placeholder": "Post sarlavhasini kiriting"},
         description='Post sarlavhasi qisqa va mazmunli bo‘lishi kerak.'
     )
