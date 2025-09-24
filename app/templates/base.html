@@ -25,10 +25,10 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a href="{{ url_for('main.index') }}" class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}">Bosh sahifa</a></li>
             {% if not current_user.is_authenticated %}
-            <li class="nav-item"><a href="{{ url_for('auth.login') }}" class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}">Kirish</a></li>
-            <li class="nav-item"><a href="{{ url_for('auth.register') }}" class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}">Ro‘yxatdan o‘tish</a></li>
+              <li class="nav-item"><a href="{{ url_for('auth.login') }}" class="nav-link {% if request.endpoint == 'auth.login' %}active{% endif %}">Kirish</a></li>
+              <li class="nav-item"><a href="{{ url_for('auth.register') }}" class="nav-link {% if request.endpoint == 'auth.register' %}active{% endif %}">Ro‘yxatdan o‘tish</a></li>
             {% else %}
-            <li class="nav-item"><a href="{{ url_for('auth.logout') }}" class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}">Chiqish</a></li>
+              <li class="nav-item"><a href="{{ url_for('auth.logout') }}" class="nav-link {% if request.endpoint == 'auth.logout' %}active{% endif %}">Chiqish</a></li>
             {% endif %}
           </ul>
         </div>
