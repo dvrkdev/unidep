@@ -1,6 +1,6 @@
 from .models import User
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, EmailField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import Email, Length, DataRequired, EqualTo, ValidationError
 
 
@@ -61,3 +61,23 @@ class LoginForm(FlaskForm):
     )
     remember = BooleanField('Eslab qolish')
     submit = SubmitField('Kirish')
+
+class PostForm(FlaskForm):
+    title = StringField(
+        'Sarlavha',
+            validators=[
+                DataRequired(message='Sarlavha kiritish majburiy.'),
+                Length(max=100, message='Sarlavha 100 ta belgidan oshmasligi kerak.')
+            ],
+        render_kw={"placeholder": "Post sarlavhasini kiriting"},
+        description='Post sarlavhasi qisqa va mazmunli bo‘lishi kerak.'
+    )
+    content = TextAreaField(
+        'Kontent',
+        validators=[
+            DataRequired(message='Kontent kiritish majburiy.')
+        ],
+        render_kw={"placeholder": "Post mazmunini kiriting", "rows": 10},
+        description='Post matni, foydalanuvchilar uchun ko‘rinadi.'
+    )
+    submit = SubmitField('Saqlash')
