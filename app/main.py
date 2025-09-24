@@ -26,3 +26,9 @@ def create_post():
         flash("Post muvaffaqiyatli yaratildi.", "success")
         return redirect(url_for("main.create_post"))
     return render("create-post.html", form=form)
+
+
+@bp.route("/read-post/<int:id>/")
+def read_post(id):
+    post = Post.query.get_or_404(id)
+    return render("read-post.html", post=post)

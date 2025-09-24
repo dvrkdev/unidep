@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <h1>{{ post.title }}</h1>
+    <h6 class="text-body-secondary"><i class="bi bi-envelope"></i> {{ post.author.email }} &bull; {{ post.created_at.strftime('%d %b, %Y') }}</h6>
+    <p>{{ post.content }}</p>
+  </div>
+</div>
+{% endblock content %}
