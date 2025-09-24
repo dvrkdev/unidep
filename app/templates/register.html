@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Ro‘yxatdan o‘tish{% endblock title %}
+{% block content %}
+  <div class="row">
+    <form action="{{ url_for('auth.register') }}" method="post">
+      {{ form.hidden_tag() }}
+      <h2 class="text-center mb-4">Ro‘yxatdan o‘tish</h2>
+
+      <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
+        <p class="text-muted small">{{ form.email.description }}</p>
+        {% for err in form.email.errors %}
+          <p class="mb-0 text-danger small">{{ err }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else "")) }}
+        <p class="text-muted small">{{ form.password.description }}</p>
+        {% for err in form.password.errors %}
+          <p class="mb-0 text-danger small">{{ err }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="mb-3">
+        {{ form.confirm_password.label(class="form-label") }}
+        {{ form.confirm_password(class="form-control" + (" is-invalid" if form.confirm_password.errors else "")) }}
+        <p class="text-muted small">{{ form.confirm_password.description }}</p>
+        {% for err in form.confirm_password.errors %}
+          <p class="mb-0 text-danger small">{{ err }}</p>
+        {% endfor %}
+      </div>
+
+      {{ form.submit(class="btn btn-dark w-100") }}
+      <p class="text-center mt-3">
+        Allaqachon ro‘yxatdan o‘tganmisiz?
+        <a href="{{ url_for('auth.login') }}">Tizimga kirish</a>
+      </p>
+    </form>
+  </div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+  <div class="row">
+    <form action="{{ url_for('auth.login') }}" method="post">
+      {{ form.hidden_tag() }}
+      <h2 class="text-center mb-4">Tizimga kirish</h2>
+
+      <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
+        <p class="text-muted small">{{ form.email.description }}</p>
+        {% for err in form.email.errors %}
+          <p class="mb-0 text-danger small">{{ err }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else "")) }}
+        <p class="text-muted small">{{ form.password.description }}</p>
+        {% for err in form.password.errors %}
+          <p class="mb-0 text-danger small">{{ err }}</p>
+        {% endfor %}
+      </div>
+
+      <div class="mb-4 form-check">
+        {{ form.remember(class="form-check-input") }}
+        {{ form.remember.label(class="form-check-label") }}
+      </div>
+
+      {{ form.submit(class="btn btn-dark w-100") }}
+      <p class="text-center mt-3">
+        Tizimda ro‘yxatdan o‘tmaganmisiz?
+        <a href="{{ url_for('auth.register') }}">Ro‘yxatdan o‘tish</a>
+      </p>
+    </form>
+  </div>
+{% endblock content %}
