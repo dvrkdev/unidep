@@ -9,7 +9,8 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/")
 def index():
-    return render("index.html")
+    posts = Post.query.order_by(Post.created_at.desc()).all()
+    return render("index.html", posts=posts)
 
 
 @bp.route("/create-post", methods=["GET", "POST"])
